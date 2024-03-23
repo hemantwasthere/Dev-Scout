@@ -9,11 +9,6 @@ import {
   uuid,
 } from "drizzle-orm/pg-core";
 
-export const testing = pgTable("testing", {
-  id: text("id").notNull().primaryKey(),
-  name: text("name"),
-});
-
 export const users = pgTable("user", {
   id: text("id").notNull().primaryKey(),
   name: text("name"),
@@ -76,8 +71,7 @@ export const room = pgTable("room", {
     .references(() => users.id, { onDelete: "cascade" }),
   name: text("name").notNull(),
   description: text("description"),
-  tags: text("tags"),
-  language: text("language").notNull(),
+  tags: text("tags").notNull(),
   githubRepo: text("github_repo"),
 });
 

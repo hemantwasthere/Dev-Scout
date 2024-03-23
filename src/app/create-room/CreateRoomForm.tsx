@@ -23,8 +23,7 @@ const formSchema = z.object({
   name: z.string().min(1).max(50),
   description: z.string().min(1).max(250),
   githubRepo: z.string().min(1).max(50),
-  language: z.string().min(1).max(50),
-  tags: z.string().min(1).max(50),
+  tags: z.string().min(1).max(100),
 });
 
 const CreateRoomForm: React.FC = () => {
@@ -38,7 +37,6 @@ const CreateRoomForm: React.FC = () => {
       name: "",
       description: "",
       githubRepo: "",
-      language: "",
       tags: "",
     },
   });
@@ -104,23 +102,6 @@ const CreateRoomForm: React.FC = () => {
               </FormControl>
               <FormDescription>
                 Please put a link to the project you are working on
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name="language"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Language</FormLabel>
-              <FormControl>
-                <Input {...field} placeholder="your project language!" />
-              </FormControl>
-              <FormDescription>
-                List your programming languages!
               </FormDescription>
               <FormMessage />
             </FormItem>

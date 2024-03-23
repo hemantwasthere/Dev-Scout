@@ -2,8 +2,8 @@
 
 import { revalidatePath } from "next/cache";
 
-import { createRoom } from "@/data-access/rooms";
 import { Room } from "@/db/schema";
+import { createRoom } from "@/services/rooms";
 import { getSession } from "../../lib/auth";
 
 export async function createRoomAction(roomData: Omit<Room, "id" | "userId">) {

@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
-import { getRooms } from "@/data-access/rooms";
+import { getRooms } from "@/services/rooms";
 import { RoomCard } from "./RoomCard";
 import { SearchBar } from "./SearchBar";
 

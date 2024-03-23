@@ -1,4 +1,4 @@
-import { like } from "drizzle-orm";
+import { eq, like } from "drizzle-orm";
 
 import { db } from "@/db";
 import { Room, room } from "@/db/schema";
@@ -9,6 +9,12 @@ export async function getRooms(search: string | undefined) {
     where,
   });
   return rooms;
+}
+
+export async function getRoom(roomId: string) {
+  return await db.query.room.findFirst({
+    where: eq(room.id, roomId),
+  });
 }
 
 export async function createRoom(
