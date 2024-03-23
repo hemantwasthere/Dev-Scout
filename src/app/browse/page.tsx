@@ -16,6 +16,7 @@ interface HomeProps {
 
 const Home: NextPage<HomeProps> = async ({ searchParams }) => {
   unstable_noStore();
+
   const rooms = await getRooms(searchParams.search);
 
   return (

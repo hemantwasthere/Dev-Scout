@@ -18,7 +18,7 @@ import {
 import { Input } from "@/components/ui/input";
 
 const formSchema = z.object({
-  search: z.string().min(0).max(50),
+  search: z.string().min(0).max(100),
 });
 
 const SearchBar = () => {

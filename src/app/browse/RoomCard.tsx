@@ -22,30 +22,37 @@ interface RoomCardProps {
 
 const RoomCard: React.FC<RoomCardProps> = ({ room }) => {
   return (
-    <Card>
-      <CardHeader>
+    <Card className="h-full sm:max-h-80">
+      <CardHeader className="h-[40%]">
         <CardTitle>{room.name}</CardTitle>
         <CardDescription>{room.description}</CardDescription>
       </CardHeader>
-      <CardContent className="flex flex-col gap-4">
-        <TagsList tags={splitTags(room?.tags ? room.tags : "")} />
-        {room.githubRepo && (
-          <Link
-            href={room.githubRepo}
-            className="flex items-center gap-2"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <GithubIcon />
-            Github Project
-          </Link>
-        )}
-      </CardContent>
-      <CardFooter>
-        <Button asChild>
-          <Link href={`/rooms/${room.id}`}>Join Room</Link>
-        </Button>
-      </CardFooter>
+
+      <div className="flex flex-col h-[60%]">
+        <CardContent className="flex flex-col gap-4 h-[60%]">
+          <TagsList
+            className="h-[90%]"
+            tags={splitTags(room?.tags ? room.tags : "")}
+          />
+          {room.githubRepo && (
+            <Link
+              href={room.githubRepo}
+              className="flex items-center gap-2 h-[10%]"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <GithubIcon />
+              Github Project
+            </Link>
+          )}
+        </CardContent>
+
+        <CardFooter className="h-[40%]">
+          <Button asChild>
+            <Link href={`/rooms/${room.id}`}>Join Room</Link>
+          </Button>
+        </CardFooter>
+      </div>
     </Card>
   );
 };
