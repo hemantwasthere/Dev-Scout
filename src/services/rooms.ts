@@ -44,3 +44,12 @@ export async function getUserRooms() {
 
   return rooms;
 }
+
+export async function editRoom(roomData: Room) {
+  const updated = await db
+    .update(room)
+    .set(roomData)
+    .where(eq(room.id, roomData.id))
+    .returning();
+  return updated[0];
+}

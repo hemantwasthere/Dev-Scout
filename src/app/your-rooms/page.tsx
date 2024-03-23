@@ -4,9 +4,10 @@ import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
 import { getUserRooms } from "@/services/rooms";
+import { NextPage } from "next";
 import { UserRoomCard } from "./UserRoomCard";
 
-const YourRoomsPage = async () => {
+const YourRoomsPage: NextPage = async () => {
   unstable_noStore();
 
   const rooms = await getUserRooms();
