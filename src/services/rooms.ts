@@ -2,6 +2,7 @@ import { eq, like } from "drizzle-orm";
 
 import { db } from "@/db";
 import { Room, room } from "@/db/schema";
+import { getSession } from "@/lib/auth";
 
 export async function getRooms(search: string | undefined) {
   const where = search ? like(room.tags, `%${search}%`) : undefined;
@@ -26,4 +27,20 @@ export async function createRoom(
     .values({ ...roomData, userId })
     .returning();
   return inserted[0];
+}
+
+export async function deleteRoom(roomId: string) {
+  await db.delete(room).where(eq(room.id, roomId));
+}
+
+export async function getUserRooms() {
+  const session = await getSession();
+  if (!session) {
+    throw new Error("User not authenticated");
+  }
+  const rooms = await db.query.room.findMany({
+    where: eq(room.userId, session.user.id),
+  });
+
+  return rooms;
 }

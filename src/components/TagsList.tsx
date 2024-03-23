@@ -7,7 +7,7 @@ import { badgeVariants } from "./ui/badge";
 
 interface TagsListProps {
   tags: string[];
-  className: string;
+  className?: string;
 }
 
 const TagsList: React.FC<TagsListProps> = ({ tags, className }) => {
