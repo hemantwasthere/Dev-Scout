@@ -18,14 +18,13 @@ import {
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/components/ui/use-toast";
 import { createRoomAction } from "./actions";
-// import { createRoomAction } from "./actions";
 
 const formSchema = z.object({
   name: z.string().min(1).max(50),
   description: z.string().min(1).max(250),
   githubRepo: z.string().min(1).max(50),
   language: z.string().min(1).max(50),
-  // tags: z.string().min(1).max(50),
+  tags: z.string().min(1).max(50),
 });
 
 const CreateRoomForm: React.FC = () => {
@@ -40,7 +39,7 @@ const CreateRoomForm: React.FC = () => {
       description: "",
       githubRepo: "",
       language: "",
-      // tags: "",
+      tags: "",
     },
   });
 
@@ -50,7 +49,7 @@ const CreateRoomForm: React.FC = () => {
       title: "Room Created",
       description: "Your room was successfully created",
     });
-    // router.push(`/rooms/${room.id}`);
+    router.push(`/rooms/${room.id}`);
   }
 
   return (
@@ -128,7 +127,7 @@ const CreateRoomForm: React.FC = () => {
           )}
         />
 
-        {/* <FormField
+        <FormField
           control={form.control}
           name="tags"
           render={({ field }) => (
@@ -144,7 +143,7 @@ const CreateRoomForm: React.FC = () => {
               <FormMessage />
             </FormItem>
           )}
-        /> */}
+        />
 
         <Button type="submit">Submit</Button>
       </form>
